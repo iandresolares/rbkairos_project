@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+    <include file="$(find rbkairos_sim_bringup)/launch/rbkairos_complete.launch">
+    </include>
+    
+    <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+        <arg name="time" value="3" />
+        <arg name="pkg" value="ira_laser_tools" />
+        <arg name="file" value="laserscan_multi_merger.launch" />
+        <arg name="node_name" value="timed_roslaunch_merge" /> <!-- This is optional argument -->
+    </include>
+</launch>

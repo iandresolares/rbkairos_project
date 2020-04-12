@@ -77,7 +77,7 @@
     <arg name="launch_gripper_c" default="false"/>
     <arg name="gripper_model_c" default="$(arg default_gripper_model)"/>
 
-
+    
     <!--BEGIN ROBOT 1-->
     <include if="$(arg launch_robot_a)" file="$(find rbkairos_gazebo)/launch/rbkairos_one_robot.launch">
         <arg name="id_robot" value="$(arg id_robot_a)"/>
@@ -99,7 +99,10 @@
         <arg name="launch_gripper" value="$(arg launch_gripper_a)"/>
         <arg name="gripper_model" value="$(arg gripper_model_a)"/>
         <arg name="load_arm_kinematics_file" value="$(arg load_arm_kinematics_file)"/>
+
+        <arg name="merge_lasers" value="$(arg merge_lasers)"/>   <!-- new -->
     </include>
+    
 
     <!--BEGIN ROBOT 2-->
     <include if="$(arg launch_robot_b)" file="$(find rbkairos_gazebo)/launch/rbkairos_one_robot.launch">
@@ -122,6 +125,8 @@
         <arg name="launch_gripper" value="$(arg launch_gripper_b)"/>
         <arg name="gripper_model" value="$(arg gripper_model_b)"/>
         <arg name="load_arm_kinematics_file" value="$(arg load_arm_kinematics_file)"/>
+
+        <arg name="merge_lasers" value="$(arg merge_lasers)"/>   <!-- new -->
     </include>
 
     <!--BEGIN ROBOT 3-->
@@ -145,6 +150,8 @@
         <arg name="launch_gripper" value="$(arg launch_gripper_c)"/>
         <arg name="gripper_model" value="$(arg gripper_model_c)"/>
         <arg name="load_arm_kinematics_file" value="$(arg load_arm_kinematics_file)"/>
+
+        <arg name="merge_lasers" value="$(arg merge_lasers)"/>   <!-- new -->
     </include>
 
 
