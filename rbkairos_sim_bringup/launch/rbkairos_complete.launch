@@ -4,7 +4,7 @@
     <!-- arg to config the launch file-->
 
     <arg name="launch_rviz" default="true"/>
-    <arg name="gazebo_world" default="$(find rbkairos_gazebo)/worlds/nave_v1_empty.world"/>
+    <arg name="gazebo_world" default="$(find rbkairos_gazebo)/worlds/office.world"/>
     <arg name="default_map" default="willow_garage/willow_garage.yaml"/>
     <arg name="default_arm_model" default="base"/>
     <arg name="default_gripper_model" default="egh"/>
@@ -20,9 +20,9 @@
     <arg name="xacro_robot_a" default="$(arg default_xacro)"/>
     <arg name="map_file_a" default="$(arg default_map)"/>
     <arg name="localization_robot_a" default="false"/>
-    <arg name="gmapping_robot_a" default="true"/>
-    <arg name="move_base_robot_a" default="false"/>
-    <arg name="amcl_and_mapserver_a" default="false"/>
+    <arg name="gmapping_robot_a" default="false"/>
+    <arg name="move_base_robot_a" default="true"/>
+    <arg name="amcl_and_mapserver_a" default="true"/>
     <arg name="launch_pad_a" default="true"/>
     <!-- spawn position robot a -->
     <arg name="x_init_pose_robot_a" default="0" />
@@ -82,12 +82,6 @@
     <!-- gripper robot c -->
     <arg name="launch_gripper_c" default="true"/>
     <arg name="gripper_model_c" default="$(arg default_gripper_model)"/>
-
- <!-- laser_scan_multimerger DELAYED -->    <!-- new --> 
-    
-    <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch">
-    </include>
-
 
 
     <!-- RBKAIROS GAZEBO -->
