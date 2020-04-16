@@ -1,4 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+import math
+
+
 
 class position:
 
@@ -6,3 +9,27 @@ class position:
 
         self.x = x
         self.y = y
+        self.z = z
+        self.theta = theta
+
+
+
+#Function which calculates the position the robot should go to follow the tracked person
+#works if robot and person coordinates are absolute, the output coordinates are also absolute
+
+def calculate_goal_position(robot, person): 
+    SAFE_RADIUS = 1.5 # [m]
+
+    goal = position()
+
+    h = math.sqrt((abs(person.x-robot.x))**2 + (abs(person.y-robot.y))**2) - SAFE_RADIUS #[m]
+
+    alpha = math.atan2((person.y-robot.y),(person.x-robot.x))  # angle from x-axis [rad]
+    
+    goal.theta = round(alpha, 3) #rad
+    goal.x = round(robot.x + h*math.cos(alpha), 3)
+    goal.y = round(robot.y + h*math.sin(alpha), 3)
+
+
+    return goal
+
