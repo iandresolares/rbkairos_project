@@ -154,7 +154,7 @@
         <arg name="merge_lasers" value="$(arg merge_lasers)"/>   <!-- new -->
     </include>
 
-
+    <!--ANCHOR maybe should be after merge-->
     <!-- gazebo simulation and rviz visualization-->
     <include file="$(find rbkairos_gazebo)/launch/gazebo_rviz.launch">
         <arg name="launch_rviz" value="$(arg launch_rviz)"/>

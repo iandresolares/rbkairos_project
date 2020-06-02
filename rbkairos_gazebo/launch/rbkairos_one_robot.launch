@@ -71,7 +71,7 @@
            output="screen" args="
                       joint_read_state_controller"/>
 
-        
+
         <group if="$(arg launch_arm)">
             <rosparam file="$(find rbkairos_gazebo)/config/arm_control.yaml" command="load"/>
             <arg name="joint_names" default="[$(arg id_robot)_arm_shoulder_pan_joint, $(arg id_robot)_arm_shoulder_lift_joint, $(arg id_robot)_arm_elbow_joint, $(arg id_robot)_arm_wrist_1_joint, $(arg id_robot)_arm_wrist_2_joint, $(arg id_robot)_arm_wrist_3_joint] "/>
@@ -110,11 +110,14 @@
         <!-- only use if you aren´t using a localization algorithm like amcl -->
         <!--node if="$(arg fake_map_transform)" pkg="tf" type="static_transform_publisher" name="static_map_broadcaster" args="0 0 0 0 0 0 map $(arg namespace)odom 100" /-->
 
+        <!--ANCHOR should be after merge-->
         <!-- amcl and map server base-->
         <include if="$(arg launch_amcl_and_mapserver)" file="$(find summit_xl_localization)/launch/map_server.launch">
             <arg name="prefix" value="$(arg prefix)"/>
             <arg name="map_file" value="$(arg map_file)"/>
         </include>
+
+        <!--ANCHOR should be after merge-->
         <include if="$(arg launch_amcl_and_mapserver)" file="$(find summit_xl_localization)/launch/amcl.launch">
             <arg name="prefix" value="$(arg prefix)"/>
             <arg name="x_init_pose" value="$(arg x_init_pose)"/>
@@ -123,7 +126,8 @@
             <arg name="odom_model_type" value="$(arg odom_model_type)"/>
         </include>
 
-                <!-- move base -->
+        <!--ANCHOR should be after merge-->
+        <!-- move base -->
         <include if="$(arg launch_move_base)" file="$(find summit_xl_navigation)/launch/move_base.launch">
             <arg name="prefix" value="$(arg prefix)"/>
             <arg name="local_planner" value="$(arg movebase_local_planner)"/>
@@ -132,7 +136,7 @@
         </include>
         
     
-
+        <!--ANCHOR should be after merge-->
         <!-- gmapping -->
         <include if="$(arg launch_gmapping)" file="$(find summit_xl_localization)/launch/slam_gmapping.launch">
             <arg name="prefix" value="$(arg prefix)"/>
