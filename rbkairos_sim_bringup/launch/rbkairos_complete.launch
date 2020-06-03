@@ -20,9 +20,9 @@
     <arg name="xacro_robot_a" default="$(arg default_xacro)"/>
     <arg name="map_file_a" default="$(arg default_map)"/>
     <arg name="localization_robot_a" default="false"/>
-    <arg name="gmapping_robot_a" default="false"/>
-    <arg name="move_base_robot_a" default="true"/>
-    <arg name="amcl_and_mapserver_a" default="true"/>
+    <arg name="gmapping_robot_a" default="true"/>
+    <arg name="move_base_robot_a" default="false"/>
+    <arg name="amcl_and_mapserver_a" default="false"/>
     <arg name="launch_pad_a" default="true"/>
     <!-- spawn position robot a -->
     <arg name="x_init_pose_robot_a" default="0" />
