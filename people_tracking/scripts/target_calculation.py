@@ -10,7 +10,6 @@ from geometry_msgs.msg import PoseWithCovarianceStamped, PoseStamped
 from squaternion import euler2quat
 
 
-
 PENDING = 0
 ACTIVE = 1
 DONE = 2
@@ -130,5 +129,4 @@ if __name__ == "__main__":
 
             
     rospy.spin()
-    
     

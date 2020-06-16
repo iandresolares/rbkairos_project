@@ -26,7 +26,7 @@
     <!-- moveit -->
     <arg name="has_safety_module" default="false"/>
     <arg name="odom_model_type" default="omni"/>
-    <arg name="movebase_local_planner" default="teb"/>
+    <arg name="movebase_local_planner" default="eband"/>
     <arg name="launch_pad" default="false"/>
     <arg name="launch_gripper" default="false"/>
     <arg name="gripper_model" default="egh"/>
@@ -160,13 +160,8 @@
         <!--NOTE merge laser launch-->
 
 
-        <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-            <arg name="time" value="6" />
-            <arg name="pkg" value="ira_laser_tools" />
-            <arg name="file" value="laserscan_multi_merger.launch" />
-            <arg name="node_name" value="timed_roslaunch_merge" />
+        <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch">
         </include>
-
 
     </group>
 
