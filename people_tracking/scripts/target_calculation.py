@@ -7,9 +7,11 @@ import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseActionGoal, MoveBaseActionFeedback, MoveBaseActionResult, MoveBaseGoal, MoveBaseFeedback
 from actionlib_msgs.msg import GoalID, GoalStatusArray
 from geometry_msgs.msg import PoseWithCovarianceStamped, PoseStamped
+from people_msgs.msg import People
 from squaternion import euler2quat
 
 
+SECURITY_RADIUS = 1.5 # [m]
 PENDING = 0
 ACTIVE = 1
 DONE = 2
@@ -26,7 +28,7 @@ tracking = True
 
 def feedback_callback(feedback):
     pass
-   #print feedback 
+    #print feedback 
     #robot.x = feedback.base_position.pose.position.x
     #robot.y = feedback.base_position.pose.position.y
 
@@ -41,8 +43,8 @@ def amcl_pose_callback(msg):
 def person_pose_callback(msg):
     #rospy.loginfo("person_pose received")
     global person
-    person.x = msg.pose.position.x
-    person.y = msg.pose.position.y
+    person.x = msg.people[0].position.x
+    person.y = msg.people[0].position.y
 
 
 if __name__ == "__main__":
@@ -62,13 +64,13 @@ if __name__ == "__main__":
     sub_amcl = rospy.Subscriber("/robot/amcl_pose", PoseWithCovarianceStamped, amcl_pose_callback)
 
     #initialize /person_pose subscriber
-    sub_person = rospy.Subscriber("/person_pose", PoseStamped, person_pose_callback)
+    sub_person = rospy.Subscriber("/person_pose", People, person_pose_callback)
 
     while True:
         if tracking:    
 
             goal = []
-            goal.append(calculate_goal_position(robot, person))  # index 0
+            goal.append(calculate_goal_position(robot, person, SECURITY_RADIUS))  # index 0
 
             q = euler2quat(0, 0, goal[0].theta)  # theta en rad
 
@@ -94,7 +96,7 @@ if __name__ == "__main__":
 
                 rate.sleep()
 
-                goal.append(calculate_goal_position(robot, person))
+                goal.append(calculate_goal_position(robot, person, SECURITY_RADIUS))
 
                 if goal[0].x != goal[1].x or goal[0].y != goal[1].y or goal[0].theta != goal[1].theta:
                     # borramos el goal anterior por lo que goal[0] es el nuevo goal

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- roslaunch arguments --> 
+	<arg name="debug" default="false"/>
+	<arg name="launch_rviz" default="false"/>
+	<arg name="world" default="$(find robot_bringup)/worlds/office.world"/> 
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(arg world)"/>
+		<arg name="debug" value="$(arg debug)" />
+		<arg name="paused" value="true"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="headless" value="false"/>
+	</include>
+	
+	<!-- launch rviz -->
+	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find robot_bringup)/rviz/rbkairos_a.rviz"/>
+
+</launch>
