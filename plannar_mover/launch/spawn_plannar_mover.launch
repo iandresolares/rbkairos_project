@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find plannar_mover)/launch/spawn_robot_urdf.launch">
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.025" />
+        <arg name="urdf_robot_file" value="$(find plannar_mover)/urdf/plannar_mover.urdf" />
+        <arg name="robot_name" value="plannar_mover" />
+    </include>
+</launch>

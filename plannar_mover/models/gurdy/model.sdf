@@ -1,0 +1,229 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="gurdy">
+    <!--
+    <link name="base_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000125066666667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000125066666667</iyy>
+          <iyz>0</iyz>
+          <izz>0.00025</izz>
+        </inertia>
+        <mass>0.2</mass>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0.001 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.002</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://gurdy/meshes/gurdy_base_with_pegs_v2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+
+
+    <link name="lowerleg1_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0.03 0 0 0</pose>
+        <inertia>
+          <ixx>3.005625e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.005625e-05</iyy>
+          <iyz>0</iyz>
+          <izz>1.125e-07</izz>
+        </inertia>
+        <mass>0.1</mass>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0.03 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0015</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://gurdy/meshes/gurdy_lowerleg_v2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+    <link name="upperleg1_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0.03 0 0 0</pose>
+        <inertia>
+          <ixx>3.015625e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.015625e-05</iyy>
+          <iyz>0</iyz>
+          <izz>3.125e-07</izz>
+        </inertia>
+        <mass>0.1</mass>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0.03 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0025</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://gurdy/meshes/gurdy_higherleg_v2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+
+    <link name="peg_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.005 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>2.24166666667e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>4.16666666667e-06</iyy>
+          <iyz>0</iyz>
+          <izz>4.74166666667e-06</izz>
+        </inertia>
+        <mass>0.1</mass>
+      </inertial>
+      <collision name="collision">
+        <pose>-0.005 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.02 0.013 0.01</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://gurdy/meshes/gurdy_base_peg.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    -->
+    <link name="head_link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>0 0 0.02 0 0 0</pose>
+        <inertia>
+          <ixx>0.000455</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000455</iyy>
+          <iyz>0</iyz>
+          <izz>0.00075</izz>
+        </inertia>
+        <mass>0.6</mass>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0.02 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.04</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10</mu>
+              <mu2>10</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://gurdy/meshes/gurdy_head_v2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+  </model>
+</sdf>

@@ -13,6 +13,8 @@
     <arg name="launch_robot_localization" default="false"/>
     <arg name="launch_amcl_and_mapserver" default="true"/>
     <arg name="launch_gmapping" default="false"/>
+    <arg name="launch_octomap" default="false"/>
+    <arg name="launch_merge_lasers" default="false"/>
     <arg name="launch_move_base" default="false"/>
     <arg name="map_file" default="empty/empty.yaml"/>
     <arg name="robot_localization_mode" default="odom"/>
@@ -96,6 +98,9 @@
         </node>
 
 
+        
+
+
         <!-- pad -->
         <include if="$(arg launch_pad)" file="$(find summit_xl_pad)/launch/summit_xl_pad.launch"/>
 
@@ -141,6 +146,8 @@
             <arg name="local_planner" value="$(arg movebase_local_planner)"/>
             <arg if="$(arg ros_planar_move_plugin)" name="differential_robot" value="false"/>
             <arg unless="$(arg ros_planar_move_plugin)" name="differential_robot" value="true"/>
+            <arg if="$(arg launch_amcl_and_mapserver)" name="map_navigation" value="map"/>
+            <arg unless="$(arg launch_amcl_and_mapserver)" name="map_navigation" value="no_map"/>
         </include>
 
         <!--ANCHOR should be after merge-->
@@ -148,7 +155,7 @@
         <include if="$(arg launch_gmapping)" file="$(find summit_xl_localization)/launch/slam_gmapping.launch">
             <arg name="prefix" value="$(arg prefix)"/>
         </include>
-        
+
 
         <!-- MoveGroup Moveit! -->
         <include if="$(arg launch_move_group)" file="$(find rbkairos_10_moveit_config)/launch/rbkairos_moveit_config.launch">
@@ -158,11 +165,13 @@
         <!--NOTE merge laser launch-->
 
 
-        <include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch">
+        <include if="$(arg launch_merge_lasers)" file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch">
+        </include>
+
+
+        <include if="$(arg launch_octomap)" file="$(find octomap_server)/launch/octomap_mapping.launch">
         </include>
 
     </group>
-
-
 
 </launch>

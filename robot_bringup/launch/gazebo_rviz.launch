@@ -4,6 +4,7 @@
 	<!-- roslaunch arguments --> 
 	<arg name="debug" default="false"/>
 	<arg name="launch_rviz" default="false"/>
+	<arg name="rviz_config" default="rbkairos_a.rviz"/>
 	<arg name="world" default="$(find robot_bringup)/worlds/office.world"/> 
 
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -15,6 +16,6 @@
 	</include>
 	
 	<!-- launch rviz -->
-	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find robot_bringup)/rviz/rbkairos_a.rviz"/>
+	<node if="$(arg launch_rviz)" name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find robot_bringup)/rviz/$(arg rviz_config)"/>
 
 </launch>

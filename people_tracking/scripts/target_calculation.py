@@ -2,7 +2,7 @@
 
 import rospy
 import math
-from custom_classes import *  # imports all classes
+from custom_class_and_function import *  # imports
 import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseActionGoal, MoveBaseActionFeedback, MoveBaseActionResult, MoveBaseGoal, MoveBaseFeedback
 from actionlib_msgs.msg import GoalID, GoalStatusArray
@@ -67,7 +67,15 @@ if __name__ == "__main__":
     sub_person = rospy.Subscriber("/person_pose", People, person_pose_callback)
 
     while True:
-        if tracking:    
+        if tracking:   
+
+            #bajamos la velocidad
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_x", "0.3")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_x_backwards", "0.15")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_y", "0.15")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_theta", "0.3")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/acc_lim_y", "0.05")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/acc_lim_x", "0.05") 
 
             goal = []
             goal.append(calculate_goal_position(robot, person, SECURITY_RADIUS))  # index 0
@@ -124,11 +132,19 @@ if __name__ == "__main__":
                     "La persona esta parada y el robot en su radio minimo de seguimiento")
 
             elif state == WARN:
-                rospy.loginfo("There is a warning in the server side")
+                rospy.loginfo("Hay un warning en el nodo move_base")
 
             elif state == ERROR:
-                rospy.loginfo("Something went wrong in the server side")
+                rospy.loginfo("Hay un error en el nodo move_base")
 
+        else:
+            #Velocidad normal
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_x", "0.75")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_x_backwards", "0.15")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_y", "0.5")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/max_vel_theta", "0.785")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/acc_lim_y", "0.2")
+            rospy.set_param("/robot/move_base/TebLocalPlannerROS/acc_lim_x", "0.2")     
             
     rospy.spin()
     
